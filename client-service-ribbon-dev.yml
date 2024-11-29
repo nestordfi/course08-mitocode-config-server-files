@@ -1,0 +1,30 @@
+server:
+  port: 9010
+
+# Ribbon Configuration
+product-service:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:9020, localhost:9021, localhost:9022
+    ServerListRefreshInterval: 1500
+    connect-timeout: 200
+    read-timeout: 200
+    write-timeout: 200
+
+user-service:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:9030, localhost:9031
+    ServerListRefreshInterval: 1500
+    connect-timeout: 200
+    read-timeout: 200
+    write-timeout: 200
+
+#Actuator configuration
+info:
+  app:
+    name: Client Service Ribbon
+    description: Cliente con Ribbon
+    version: 0.0.1

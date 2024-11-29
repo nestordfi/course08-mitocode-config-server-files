@@ -1,2 +1,5 @@
 common:
   configuration: General
+
+application:
+  title: user-service-v3
