@@ -12,6 +12,16 @@ product-service:
     read-timeout: 200
     write-timeout: 200
 
+user-service:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:9030, localhost:9031
+    ServerListRefreshInterval: 1500
+    connect-timeout: 200
+    read-timeout: 200
+    write-timeout: 200
+
 #Actuator configuration
 info:
   app:
