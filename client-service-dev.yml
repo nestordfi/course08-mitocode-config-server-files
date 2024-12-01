@@ -1,0 +1,10 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:9010}
+
+# Enable actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        base-path: /actuator

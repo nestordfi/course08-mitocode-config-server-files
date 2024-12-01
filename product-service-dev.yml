@@ -6,6 +6,7 @@ spring:
   data:
     mongodb:
       uri: ${MONGODB.URL.CONNECTION:mongodb://mitocode:mitocode@localhost:27017/mitocode?authSource=admin}
+      
 # Postgres Configuration
   jpa:
     databasePlatform:

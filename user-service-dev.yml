@@ -6,10 +6,3 @@ spring:
   data:
     mongodb:
       uri: ${MONGODB.URL.CONNECTION:mongodb://mitocode:mitocode@localhost:27017/mitocode?authSource=admin}
-
-eureka:
-  client:
-    fetchRegistry: true
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: ${EUREKA.SERVER.HOST:http://server-01.com:8761/eureka} 
