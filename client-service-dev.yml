@@ -32,3 +32,14 @@ management:
       exposure:
         include: '*'
         base-path: /actuator
+
+mitocode:
+  circuit-breaker:
+    common:
+        slidingWindowSize: 20
+        failureRateThreshold: 25
+        waitDurationInOpenState: 15000
+        permittedNumberOfCallsInHalfOpenState: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        slowCallDurationThreshold: 2000
+        slowCallRateThreshold: 20      
