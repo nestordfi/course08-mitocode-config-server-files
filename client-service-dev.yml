@@ -8,7 +8,7 @@ resilience4j:
       product-service-circuit-breaker:
         slidingWindowSize: 13
         failureRateThreshold: 50
-        waitDurationInOpenState: 30
+        waitDurationInOpenState: 30s
         permittedNumberOfCallsInHalfOpenState: 5
         automaticTransitionFromOpenToHalfOpenEnabled: false
     instances:
