@@ -16,6 +16,14 @@ resilience4j:
     instances:
       mitocode-product:
         base-config: product-service-circuit-breaker
+  timelimiter:
+    configs:
+      product-service-time-limiter:
+        timeoutDuration: 1s
+    instances:
+      mitocode-product-tl:
+        base-config: product-service-time-limiter
+
 
 # Enable actuator
 management:
