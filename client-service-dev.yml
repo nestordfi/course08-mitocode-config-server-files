@@ -10,6 +10,7 @@ resilience4j:
         failureRateThreshold: 50
         waitDurationInOpenState: 30
         permittedNumberOfCallsInHalfOpenState: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: false
     instances:
       mitocode-product:
         base-config: product-service-circuit-breaker
