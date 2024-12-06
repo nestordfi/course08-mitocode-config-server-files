@@ -7,9 +7,6 @@ spring:
     gateway:
       routes:
 
-
-/api/product/financial 
-
         - id: product-service-route
           uri: lb://product-service
           predicates:
