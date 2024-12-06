@@ -22,3 +22,4 @@ spring:
             - Path=/api/user/**
           filters:
             - StripPrefix=2
+            - AddRequestParameter=email,mitocode@mitocode.com
