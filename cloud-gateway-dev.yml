@@ -1,0 +1,32 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:9080}
+
+# Spring Cloud Gateway Routes
+spring:
+  cloud:
+    gateway:
+      routes:
+
+        - id: product-service-route
+          uri: lb://product-service
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - StripPrefix=2
+            # - AddRequestParameter=flag,false
+            # - AddRequestHeader=appCallerName,Mitocode
+
+            ## Customer Filter 1
+            # - name: MitocodeCustomFilter
+            #   args:
+            #     headerKey: Text1
+            #     headerValue: Text2
+            - MitocodeCustomFilter=Text1, Text2
+
+        - id: user-service-route
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=2
+            - AddRequestParameter=email,mitocode@mitocode.com
