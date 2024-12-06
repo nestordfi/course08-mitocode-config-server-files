@@ -15,10 +15,13 @@ spring:
             - StripPrefix=2
             # - AddRequestParameter=flag,false
             # - AddRequestHeader=appCallerName,Mitocode
-            - name: CustomFilter
-              args:
-                headerKey: Text1
-                headerValue: Text2
+
+            ## Customer Filter 1
+            # - name: MitocodeCustomFilter
+            #   args:
+            #     headerKey: Text1
+            #     headerValue: Text2
+            MitocodeCustomFilter=Text1, Text2
 
         - id: user-service-route
           uri: lb://user-service
