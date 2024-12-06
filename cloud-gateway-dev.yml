@@ -1,2 +1,2 @@
 server:
-  port: ${CUSTOM.SERVER:PORT:9080}
+  port: ${CUSTOM.SERVER.PORT:9080}
