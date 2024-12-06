@@ -11,6 +11,8 @@ spring:
           uri: lb://product-service
           predicates:
             - Path=/api/product/**
+            - AddRequestParameter=flag,false
+            - AddRequestHeader=appCallerName,Mitocode
           filters:
             - StripPrefix=2
 
