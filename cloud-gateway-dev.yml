@@ -7,16 +7,19 @@ spring:
     gateway:
       routes:
 
+
+/api/product/financial 
+
         - id: product-service-route
           uri: lb://product-service
           predicates:
             - Path=/api/product/**
           filters:
-            - StripPrefix=3
+            - StripPrefix=2
 
         - id: user-service-route
           uri: lb://user-service
           predicates:
             - Path=/api/user/**
           filters:
-            - StripPrefix=3
+            - StripPrefix=2
