@@ -1,2 +1,22 @@
 server:
   port: ${CUSTOM.SERVER.PORT:9080}
+
+# Spring Cloud Gateway Routes
+spring:
+  cloud:
+    gateway:
+      routes:
+        
+        - id: product-service-route
+          uri: lb://product-service
+          predicates:
+            - Path=/api/product/v1/**
+          filters:
+            - StripPrefix=3
+
+        - id: user-service-route
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/v1/**
+          filters:
+            - StripPrefix=3
