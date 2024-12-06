@@ -13,8 +13,12 @@ spring:
             - Path=/api/product/**
           filters:
             - StripPrefix=2
-            - AddRequestParameter=flag,false
-            - AddRequestHeader=appCallerName,Mitocode
+            # - AddRequestParameter=flag,false
+            # - AddRequestHeader=appCallerName,Mitocode
+            - name: CustomFilter
+              args:
+                headerKey: Text1
+                headerValue: Text2
 
         - id: user-service-route
           uri: lb://user-service
