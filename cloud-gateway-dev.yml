@@ -21,7 +21,7 @@ spring:
             #   args:
             #     headerKey: Text1
             #     headerValue: Text2
-            - MitocodeCustomFilter=Text1, Text2, Mitocode, true
+            - MitocodeCustomFilter=Text1, Text2, true, Mitocode
 
         - id: user-service-route
           uri: lb://user-service
