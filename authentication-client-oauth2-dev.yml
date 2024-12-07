@@ -7,6 +7,9 @@ spring:
     oauth2:
       client:
         registration:
-          github:
-            client-id: Ov23litJTRb7yj7GtsEU
-            client-secret: 272d34b374e79de2ce5fce56d99a904c4158d8a2
+          # github:
+            # client-id: xxxxxxxxxxxxxxxx
+            # client-secret: xxxxxxxxxxxxxxxx
+          google:
+            client-id: xxxxxxxxxxxxxxxx
+            client-secret: xxxxxxxxxxxxxxxx
