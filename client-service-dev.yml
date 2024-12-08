@@ -36,7 +36,16 @@ resilience4j:
     instances:
       mitocode-product-tl:
         base-config: product-service-time-limiter
-
+  retry:
+    configs:
+      default:
+        maxAttempts: 4
+        waitDuration: 2000
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+    instances:
+      retry-config:
+        baseConfig: default
 
 # Enable actuator
 management:
