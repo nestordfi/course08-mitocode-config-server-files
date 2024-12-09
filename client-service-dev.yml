@@ -8,7 +8,7 @@ resilience4j:
       enabled: true
       legacy:
         enabled: true
-    instances:
+    configs:
       product-service-circuit-breaker:
         registerHealthIndicator: true
         allowHealthIndicatorToFail: true  
@@ -26,9 +26,9 @@ resilience4j:
             - org.springframework.web.client.HttpServerErrorException
             - java.util.concurrent.TimeoutException
             - java.io.IOException
-    # instances:
-    #   mitocode-product:
-    #     base-config: product-service-circuit-breaker
+    instances:
+      mitocode-product:
+        base-config: product-service-circuit-breaker
   timelimiter:
     configs:
       product-service-time-limiter:
