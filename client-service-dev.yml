@@ -6,6 +6,8 @@ resilience4j:
   circuitbreaker:
     metrics:
       enabled: true
+      legacy:
+        enabled: true
     configs:
       product-service-circuit-breaker:
         registerHealthIndicator: true
