@@ -17,6 +17,7 @@ resilience4j:
         automaticTransitionFromOpenToHalfOpenEnabled: true
         slowCallDurationThreshold: 2000ms
         slowCallRateThreshold: 20
+        eventConsumerBufferSize: 10
         recordExceptions:
             - org.springframework.web.client.HttpServerErrorException
             - java.util.concurrent.TimeoutException
