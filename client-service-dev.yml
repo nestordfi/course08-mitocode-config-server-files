@@ -4,6 +4,8 @@ server:
 # Resilience4j Configuration
 resilience4j:
   circuitbreaker:
+    metrics:
+      enabled: true
     configs:
       product-service-circuit-breaker:
         registerHealthIndicator: true
