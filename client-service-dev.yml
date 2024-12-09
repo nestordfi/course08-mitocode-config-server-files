@@ -9,6 +9,7 @@ resilience4j:
         registerHealthIndicator: true
         allowHealthIndicatorToFail: true  
         slidingWindowType: count_based
+        minimumNumberOfCalls: 13
         slidingWindowSize: 13
         failureRateThreshold: 50
         waitDurationInOpenState: 30s
