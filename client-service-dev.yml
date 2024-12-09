@@ -6,6 +6,7 @@ resilience4j:
   circuitbreaker:
     configs:
       product-service-circuit-breaker:
+        registerHealthIndicator: true
         slidingWindowSize: 13
         failureRateThreshold: 50
         waitDurationInOpenState: 30s
