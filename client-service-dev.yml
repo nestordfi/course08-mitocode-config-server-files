@@ -39,9 +39,9 @@ resilience4j:
   retry:
     configs:
       retry-mitocode-product:
-        maxAttempts: 3
-        waitDuration: 500
-        enableExponentialBackoff: false
+        maxAttempts: 5
+        waitDuration: 2000
+        enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
     instances:
       retry-product:
