@@ -22,10 +22,10 @@ resilience4j:
         slowCallDurationThreshold: 2000ms
         slowCallRateThreshold: 20
         eventConsumerBufferSize: 10
-        recordExceptions:
-            - org.springframework.web.client.HttpServerErrorException
-            - java.util.concurrent.TimeoutException
-            - java.io.IOException
+        # recordExceptions:
+        #     - org.springframework.web.client.HttpServerErrorException
+        #     - java.util.concurrent.TimeoutException
+        #     - java.io.IOException
     instances:
       mitocode-product:
         base-config: product-service-circuit-breaker
