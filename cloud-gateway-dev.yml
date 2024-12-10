@@ -5,11 +5,13 @@ server:
 spring:
   cloud:
     gateway:
+      defaultFilters:
+      - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       # CORS Configuration
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:9010"
+            allowedOrigins: "http://localhost:3000"
             allowedMethods:
             - PUT
       routes:
@@ -36,7 +38,7 @@ spring:
             - Path=/api/user/**
           metadata:
             cors:
-              allowedOrigins: '*'
+              allowedOrigins: 'http://localhost:3000'
               allowedMethods:
                 - PUT
               allowedHeaders: '*'
