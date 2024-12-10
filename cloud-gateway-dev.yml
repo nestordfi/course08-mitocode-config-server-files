@@ -15,6 +15,7 @@ spring:
             allowedOrigins: "http://localhost:3000"
             allowedMethods:
             - PUT
+            - POST
       routes:
 
         - id: product-service-route
