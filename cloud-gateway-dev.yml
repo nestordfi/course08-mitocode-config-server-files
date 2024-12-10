@@ -7,7 +7,7 @@ spring:
     gateway:
       # CORS Configuration
       globalcors:
-        cors-configurations:
+        corsConfigurations:
           '[/**]':
             allowedOrigins: "http://localhost:9010"
             allowedMethods:
