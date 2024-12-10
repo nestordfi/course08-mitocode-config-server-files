@@ -41,7 +41,7 @@ spring:
             cors:
               allowedOrigins: 'http://localhost:3000'
               allowedMethods:
-                - PUT
+                - GET
               allowedHeaders: '*'
               maxAge: 30
           filters:
