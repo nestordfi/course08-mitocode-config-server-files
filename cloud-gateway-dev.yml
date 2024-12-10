@@ -5,6 +5,13 @@ server:
 spring:
   cloud:
     gateway:
+      # CORS Configuration
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:9010"
+            allowedMethods:
+            - PUT
       routes:
 
         - id: product-service-route
