@@ -16,6 +16,7 @@ spring:
             allowedMethods:
             - PUT
             - POST
+            - GET
       routes:
 
         - id: product-service-route
