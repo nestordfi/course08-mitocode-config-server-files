@@ -38,7 +38,6 @@ spring:
             cors:
               allowedOrigins: '*'
               allowedMethods:
-                - GET
                 - PUT
               allowedHeaders: '*'
               maxAge: 30
