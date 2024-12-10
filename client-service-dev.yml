@@ -8,7 +8,7 @@ resilience4j:
       enabled: true
       legacy:
         enabled: true
-    configs:
+    instances:
       product-service-circuit-breaker:
         registerHealthIndicator: true
         allowHealthIndicatorToFail: true  
