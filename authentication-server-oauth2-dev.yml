@@ -1,2 +1,9 @@
 server:
   port: ${CUSTOM.SERVER.PORT:8088}
+
+
+mitocode:
+  security:
+    client: mitocodeClient
+    secret: secret
+    key: mitocode
