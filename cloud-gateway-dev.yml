@@ -5,8 +5,14 @@ server:
 spring:
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000, http://server-02.com"
+            allowedMethods:
+              - POST
+              - GET
       routes:
-
         - id: product-service-route
           uri: lb://product-service
           predicates:
@@ -27,6 +33,13 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/user/**
+          metadata:
+            cors:
+              allowedOrigins: 'http://localhost:3001'
+              allowedMethods:
+                - GET
+              allowedHeader: '*'
+              maxAge: 30
           filters:
             - StripPrefix=2
             - AddRequestParameter=email,mitocode@mitocode.com

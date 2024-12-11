@@ -4,8 +4,16 @@ server:
 # Resilience4j Configuration
 resilience4j:
   circuitbreaker:
+    metrics:
+      enabled: true
+      legacy:
+        enabled: true
     configs:
       product-service-circuit-breaker:
+        registerHealthIndicator: true
+        allowHealthIndicatorToFail: true  
+        slidingWindowType: count_based
+        minimumNumberOfCalls: 13
         slidingWindowSize: 13
         failureRateThreshold: 50
         waitDurationInOpenState: 30s
@@ -13,6 +21,11 @@ resilience4j:
         automaticTransitionFromOpenToHalfOpenEnabled: true
         slowCallDurationThreshold: 2000ms
         slowCallRateThreshold: 20
+        eventConsumerBufferSize: 10
+        # recordExceptions:
+        #     - org.springframework.web.client.HttpServerErrorException
+        #     - java.util.concurrent.TimeoutException
+        #     - java.io.IOException
     instances:
       mitocode-product:
         base-config: product-service-circuit-breaker
@@ -23,7 +36,16 @@ resilience4j:
     instances:
       mitocode-product-tl:
         base-config: product-service-time-limiter
-
+  retry:
+    configs:
+      retry-mitocode-product:
+        maxAttempts: 5
+        waitDuration: 2000
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+    instances:
+      retry-product:
+        baseConfig: retry-mitocode-product
 
 # Enable actuator
 management:
