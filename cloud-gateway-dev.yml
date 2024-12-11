@@ -6,7 +6,7 @@ spring:
   cloud:
     gateway:
       globalcors:
-        corsConfiguration:
+        corsConfigurations:
           '[/**]':
             allowedOrigins: "http://localhost:3000"
       routes:
