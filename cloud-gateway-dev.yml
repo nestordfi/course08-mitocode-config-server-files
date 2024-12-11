@@ -9,6 +9,8 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+              - POST
       routes:
         - id: product-service-route
           uri: lb://product-service
