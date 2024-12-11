@@ -5,20 +5,11 @@ server:
 spring:
   cloud:
     gateway:
-      defaultFilters:
-      - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-      # CORS Configuration
       globalcors:
-        add-to-simple-url-handler-mapping: true
-        corsConfigurations:
+        corsConfiguration:
           '[/**]':
             allowedOrigins: "http://localhost:3000"
-            allowedMethods:
-            - PUT
-            - POST
-            - GET
       routes:
-
         - id: product-service-route
           uri: lb://product-service
           predicates:
@@ -39,13 +30,6 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/user/**
-          metadata:
-            cors:
-              allowedOrigins: 'http://localhost:3000'
-              allowedMethods:
-                - GET
-              allowedHeaders: '*'
-              maxAge: 30
           filters:
             - StripPrefix=2
             - AddRequestParameter=email,mitocode@mitocode.com
