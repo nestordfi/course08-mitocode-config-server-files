@@ -11,6 +11,7 @@ spring:
             allowedOrigins: "http://localhost:3000"
             allowedMethods:
               - POST
+              - GET
       routes:
         - id: product-service-route
           uri: lb://product-service
@@ -32,6 +33,13 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/user/**
+          metadata:
+            cors:
+              allowedOrigins: 'http://localhost:3001'
+              allowedMethods:
+                - GET
+              allowedHeader: '*'
+              maxAge: 30
           filters:
             - StripPrefix=2
             - AddRequestParameter=email,mitocode@mitocode.com
