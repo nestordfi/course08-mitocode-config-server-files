@@ -1,6 +1,30 @@
 server:
   port: ${CUSTOM.SERVER.PORT:9080}
 
+# Resilience4j Configuration
+resilience4j:
+  circuitbreaker:
+    metrics:
+      enabled: true
+      legacy:
+        enabled: true
+    configs:
+      product-service-cb:
+        registerHealthIndicator: true
+        allowHealthIndicatorToFail: true  
+        slidingWindowType: count_based
+        minimumNumberOfCalls: 13
+        slidingWindowSize: 13
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+        permittedNumberOfCallsInHalfOpenState: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        slowCallDurationThreshold: 2000ms
+        slowCallRateThreshold: 20
+    instances:
+      product-service-circuitbreaker:
+        base-config: product-service-cb
+
 # Spring Cloud Gateway Routes
 spring:
   cloud:
@@ -21,6 +45,8 @@ spring:
             - StripPrefix=2
             - AddRequestParameter=flag,false
             - AddRequestHeader=appCallerName,Mitocode
+            - name: CircuitBreaker
+              - name: product-service-circuitbreaker
 
             ## Customer Filter 1
             # - name: MitocodeCustomFilter
