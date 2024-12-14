@@ -1,0 +1,33 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:9080}
+
+# Spring Cloud Gateway Routes
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product-service-route
+          uri: lb://product-service
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - StripPrefix=2
+
+        - id: user-service-route
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=2
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/mitocode-gateway-realm
+          jwk-set-uri: http://localhost:8080/realms/mitocode-gateway-realm/protocol/openid-connect/certs
+
+jwt:
+  auth:
+    converter:
+      resourceId: cloud-gateway-keycloak
+      principalAttribute: preferred_username
