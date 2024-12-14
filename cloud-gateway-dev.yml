@@ -46,6 +46,7 @@ spring:
             - AddRequestParameter=flag,false
             - AddRequestHeader=appCallerName,Mitocode
             - name: CircuitBreaker
+              args:
               - name: product-service-circuitbreaker
 
             ## Customer Filter 1
