@@ -42,6 +42,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: product-service-circuitbreaker
+                statusCodes: 400,401,403,500,503,504
 
             ## Customer Filter 1
             # - name: MitocodeCustomFilter
