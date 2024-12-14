@@ -43,6 +43,7 @@ spring:
               args:
                 name: product-service-circuitbreaker
                 statusCodes: 400,401,403,500,503,504
+                fallbackUri: forward:/api/user/api/mitocode/user
 
             ## Customer Filter 1
             # - name: MitocodeCustomFilter
