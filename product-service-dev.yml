@@ -21,3 +21,13 @@ spring:
     url: ${POSTGRESQL.URL.CONNECTION:jdbc:postgresql://localhost:5432/mitocode}
     username: mitocode
     password: '{cipher}bd8b6928566a8e66e5255e081bf9a35218fd7e2a42ec0fcb19ff2f2ff87817cd'
+
+# OpenAPI Configuration
+
+springdoc:
+  api-docs:
+    path: /api-docs
+    enabled: true
+  swagger-ui:
+    enabled: false
+    path: /openapi.yml
