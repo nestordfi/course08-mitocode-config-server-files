@@ -1,6 +1,24 @@
 server:
   port: ${CUSTOM.SERVER.PORT:9080}
 
+# Resilience4j Configuration
+resilience4j:
+  circuitbreaker:
+    configs:
+      product-service-cb:
+        slidingWindowType: count_based
+        minimumNumberOfCalls: 13
+        slidingWindowSize: 13
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+        permittedNumberOfCallsInHalfOpenState: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        slowCallDurationThreshold: 2000ms
+        slowCallRateThreshold: 20
+    instances:
+      product-service-circuitbreaker:
+        base-config: product-service-cb
+
 # Spring Cloud Gateway Routes
 spring:
   cloud:
@@ -21,6 +39,11 @@ spring:
             - StripPrefix=2
             - AddRequestParameter=flag,false
             - AddRequestHeader=appCallerName,Mitocode
+            - name: CircuitBreaker
+              args:
+                name: product-service-circuitbreaker
+                statusCodes: 400,401,403,500,503,504
+                fallbackUri: forward:/api/user/api/mitocode/user
 
             ## Customer Filter 1
             # - name: MitocodeCustomFilter
@@ -43,3 +66,14 @@ spring:
           filters:
             - StripPrefix=2
             - AddRequestParameter=email,mitocode@mitocode.com
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        base-path: /actuator
+
+mitocode:
+  security:
+    key: 6324837009e15dae3f11d515423ee4c87d5942c82767b118a86fc1e5eb3d21b1293ed6e3680dda8ea3d80224638d30e4a8373f796a4d2f0133cafc989a7f5dd8834ee8defb1e76bce6ff02f9e041606b7b569004127add844b1f17db5f60492c
