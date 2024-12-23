@@ -4,3 +4,36 @@ eureka:
     registerWithEureka: true
     serviceUrl:
       defaultZone: ${EUREKA.SERVER.HOST:http://localhost:8761/eureka}
+
+
+#Enable Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        base-path: /actuator
+# Enable zipkin traces
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    config:
+      endpoint: http://localhost:9411/api/v2/spans
+
+#Actuator configuration
+info:
+  app:
+    name: Product Service
+    description: Product Service
+    version: 0.0.1
+
+# Logging configuration
+logging:
+  level:
+    org:
+      springframework:
+        web: ALL
+    com:
+      mitocode:
+        microservices: ALL    

@@ -36,25 +36,17 @@ resilience4j:
     instances:
       mitocode-product-tl:
         base-config: product-service-time-limiter
-resilience4j:
+
   retry:
     configs:
       retry-product:
         maxAttempts: 5
-        waitDuration: 2000
+        waitDuration: 200
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
     instances:
       retry-product:
         baseConfig: retry-product
-
-# Enable actuator
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-        base-path: /actuator
 
 mitocode:
   circuit-breaker:
@@ -66,3 +58,18 @@ mitocode:
         automaticTransitionFromOpenToHalfOpenEnabled: true
         slowCallDurationThreshold: 2000
         slowCallRateThreshold: 80     
+
+# OpenTelemetry Configuration
+
+management:
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+      timeout: 10s
+    metrics:
+      exportes:
+        url: http://localhost:4318/v1/metrics
+        step: 5s
+  opentelemetry:
+    resourceAttributes."client-service": ${spring.application.name}
+

@@ -1,0 +1,13 @@
+# Kafka properties
+kafka:
+  mitocode:
+    server: localhost
+    topic: mitocode
+    port: 9092
+
+
+# Mongo Configuration
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB.URL.CONNECTION:mongodb://mitocode:mitocode@localhost:27017/mitocode?authSource=admin}
